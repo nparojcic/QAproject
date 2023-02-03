@@ -42,10 +42,5 @@ def menu():
         if choice.upper() == 'N':
             print("Program Terminated")
             programRunning = False
-    
 
-
-
-
-
-print(service.getAll())
+menu()

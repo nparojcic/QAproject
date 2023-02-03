@@ -17,6 +17,15 @@ def CreatingTable():
     sql_string = sql_file.read()
     setupCursor().executescript(sql_string)
 
-CreatingTable()
 
-setupConn().commit() 
+def selectQuery(query):
+    return cursor.execute(query).fetchall()
+
+def dataQuery(query):
+    cursor.execute(query)
+    return True
+
+def commitChanges():
+    setupConn().commit()
+
+# CreatingTable()

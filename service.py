@@ -1,6 +1,4 @@
-# The service file interacts with the DB file to Query or Modify data within the database
-# Typically there will be a function for each process that is required, and these will take in data and return data
-
+from db import *
 
 def read_by_id(id):
     order_data = db.query(id)
@@ -11,7 +9,7 @@ def create_order(drink_name, customer, size, quantity):
     customer = input("Customer name: ")
     drink_name = input("Drink name: ")
     size = input("Size: ")
-    order_query = f"INSERT INTO orders (drink_name, customer, size, quantity) VALUES ('{drink_name}', '{customer}', {size}, '{quantity}');"
+    order_query = f"INSERT INTO orders (drink, customer, size, quantity) VALUES ('{drink}', '{customer}', {size}, '{quantity}');"
     cursor.execute(order_query)
     return True
 
@@ -20,8 +18,8 @@ def readAllOrders():
     return selectQuery(query)
 
 def deleteOrder():
-    id = input("What is the ID of the movie you want to delete from the system?: ")
-    query = f"DELETE FROM movies where film_id = {id}"
+    id = input("What is the ID of the order you want to delete from the system?: ")
+    query = f"DELETE FROM orders where order_id = {id}"
     return dataQuery(query)
 
 def deleteAllOrders():
@@ -44,7 +42,7 @@ def deleteAllOrders():
 def updateOrder():
     id = input("What is the ID of the order? ")
     title = input("What would you like to update it to? ")
-    query = f"UPDATE orders SET orderId = '{title}' WHERE film_id = {id}"
+    query = f"UPDATE orders SET orderId = '{order_id}' WHERE order_id = {id}"
     return dataQuery(query)
 
 
