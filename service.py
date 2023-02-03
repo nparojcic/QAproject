@@ -7,14 +7,12 @@ def read_by_id(id):
     order = order(order_data) 
     
 def create_order(drink_name, customer, size, quantity):
-    order_id = 0
-    order = Order(drink_name, customer, size, quantity)
-    order_id = 
-    genre = input("Please enter genre: ")
-    third_dimension_film = input("Is it 3D? ")
-    movie_query = f"INSERT INTO orders (drink_name, customer, size, quantity) VALUES ('{drink_name}', '{customer}', {size}, '{quantity}');"
-    cursor.execute(movie_query)
-    order_id += 1
+    # order = Order(drink_name, customer, size, quantity)
+    customer = input("Customer name: ")
+    drink_name = input("Drink name: ")
+    size = input("Size of drink: ")
+    order_query = f"INSERT INTO orders (drink_name, customer, size, quantity) VALUES ('{drink_name}', '{customer}', {size}, '{quantity}');"
+    cursor.execute(order_query)
     return True
     
 
