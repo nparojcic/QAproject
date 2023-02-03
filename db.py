@@ -3,13 +3,20 @@
 
 import sqlite3
 
-def setupConn(orders):
-    conn = sqlite3.connect(orders)
+def setupConn():
+    conn = sqlite3.connect("ordersDatabase")
     conn.execute("PRAGMA foreign_keys = 1")
-    cursor = conn.cursor()
-    return conn, cursor
+    return conn
 
+def setupCursor():
+    cursor = setupConn().cursor()
+    return cursor
 
+def CreatingTable():
+    sql_file = open("orders.sql")
+    sql_string = sql_file.read()
+    setupCursor().executescript(sql_string)
 
+CreatingTable()
 
-conn.commit() 
+setupConn().commit() 

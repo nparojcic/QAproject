@@ -10,21 +10,36 @@ def create_order(drink_name, customer, size, quantity):
     # order = Order(drink_name, customer, size, quantity)
     customer = input("Customer name: ")
     drink_name = input("Drink name: ")
-    size = input("Size of drink: ")
+    size = input("Size: ")
     order_query = f"INSERT INTO orders (drink_name, customer, size, quantity) VALUES ('{drink_name}', '{customer}', {size}, '{quantity}');"
     cursor.execute(order_query)
     return True
-    
 
-def deleteOrderId():
-    id = input("What is the ID of the order you want to delete from the system?: ")
-    query = f"DELETE FROM orders where order_id = {id}"
-    return dataQuery(query)
+def readAllOrders():
+    query = "SELECT * FROM orders"
+    return selectQuery(query)
 
 def deleteOrder():
     id = input("What is the ID of the movie you want to delete from the system?: ")
     query = f"DELETE FROM movies where film_id = {id}"
     return dataQuery(query)
+
+def deleteAllOrders():
+    while True:
+        choice = input("Delete all orders? (yes / no")
+        if choice.lower() == "yes":
+            doubleCheck = input("Are you sure? ")
+            if doubleCheck.lower() == "yes":
+                query = f"DELETE * FROM orders"
+                return dataQuery(query)
+            elif doubleCheck.lower() == "no":
+                return False
+        elif choice.lower() == "no":
+            return False
+        else: 
+            print("Invalid choice (yes or no): ")
+
+    
 
 def updateOrder():
     id = input("What is the ID of the order? ")
@@ -32,11 +47,4 @@ def updateOrder():
     query = f"UPDATE orders SET orderId = '{title}' WHERE film_id = {id}"
     return dataQuery(query)
 
-def insertMovie():
-    
-
-def insertTicket(film_id):
-    ticket_query = f"INSERT INTO tickets (film_id, number_tickets, ticket_name) VALUES ({film_id}, 5, 'Wesley Snipes');"
-    cursor.execute(ticket_query)
-    return True
 

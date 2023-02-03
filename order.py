@@ -2,4 +2,5 @@
 # takes in string and numerical values from the runner / controller
 
 class Order:
-   def __init__(self, order, ) 
+   def __init__(self, order):
+    
