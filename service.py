@@ -1,16 +1,18 @@
 from db import *
 
 def read_by_id(id):
-    order_data = db.query(id)
+    id = input("What is the id of the order you want to read?: ")
+    order_data = ordersDatabase.query(id)
     order = order(order_data) 
     
-def create_order(drink_name, customer, size, quantity):
+def create_order():
     # order = Order(drink_name, customer, size, quantity)
     customer = input("Customer name: ")
-    drink_name = input("Drink name: ")
+    drink = input("Drink name: ")
     size = input("Size: ")
-    order_query = f"INSERT INTO orders (drink, customer, size, quantity) VALUES ('{drink}', '{customer}', {size}, '{quantity}');"
-    cursor.execute(order_query)
+    quantity = input("Quantity: ")
+    order_query = f"INSERT INTO orders (drink, customer, size, quantity) VALUES ('{drink}', '{customer}', '{size}', '{quantity}');"
+    setupCursor().execute(order_query).fetchall()
     return True
 
 def readAllOrders():
