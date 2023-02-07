@@ -2,7 +2,7 @@ from db import *
 
 def read_by_id(id):
     id = input("What is the id of the order you want to read?: ")
-    order_data = ordersDatabase.query(id)
+    order_data = orders.query(id)
     order = order(order_data) 
     
 def create_order():
@@ -12,7 +12,7 @@ def create_order():
     size = input("Size: ")
     quantity = input("Quantity: ")
     order_query = f"INSERT INTO orders (drink, customer, size, quantity) VALUES ('{drink}', '{customer}', '{size}', '{quantity}');"
-    setupCursor().execute(order_query).fetchall()
+    cursor.execute(order_query).fetchall()
     return True
 
 def readAllOrders():
@@ -47,4 +47,4 @@ def updateOrder():
     query = f"UPDATE orders SET orderId = '{order_id}' WHERE order_id = {id}"
     return dataQuery(query)
 
-
+commitChanges()
