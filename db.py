@@ -13,7 +13,7 @@ def selectQuery(query):
     return cursor.execute(query).fetchall()
 
 def dataQuery(query):
-    setupCursor.execute(query)
+    cursor.execute(query)
     return True
 
 def commitChanges():

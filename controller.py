@@ -20,7 +20,7 @@ def menu():
         if selection == 1:
             create_order()
         elif selection == 2:
-            print(read_by_id(id))
+            print(read_by_id())
         elif selection == 3:
             print(readAllOrders())
         elif selection == 4:
@@ -36,8 +36,11 @@ def menu():
         if choice.upper() == 'N':
             print("Program Terminated")
             programRunning = False
-        if choice.upper() == 'Y':
+        elif choice.upper() == 'Y':
             programRunning = True
+        else:
+            print("Incorrect input, try again: ")
+
 
 menu()
 commitChanges()

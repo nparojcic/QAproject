@@ -1,12 +1,11 @@
 from db import *
 
-def read_by_id(id):
+def read_by_id():
     id = input("What is the id of the order you want to read?: ")
-    order_data = orders.query(id)
-    order = order(order_data) 
+    query = f"SELECT * FROM orders WHERE order_id = {id}"
+    return selectQuery(query)
     
 def create_order():
-    # order = Order(drink_name, customer, size, quantity)
     customer = input("Customer name: ")
     drink = input("Drink name: ")
     size = input("Size: ")
@@ -31,7 +30,7 @@ def deleteAllOrders():
             doubleCheck = input("Are you sure? ")
             if doubleCheck.lower() == "yes":
                 query = f"DELETE * FROM orders"
-                return dataQuery(query)
+                dataQuery(query)
             elif doubleCheck.lower() == "no":
                 return False
         elif choice.lower() == "no":
@@ -42,9 +41,9 @@ def deleteAllOrders():
     
 
 def updateOrder():
-    id = input("What is the ID of the order? ")
-    title = input("What would you like to update it to? ")
-    query = f"UPDATE orders SET orderId = '{order_id}' WHERE order_id = {id}"
+    order_id = input("What is the ID of the order? ")
+    id = input("ID of customer:  ")
+    query = f"UPDATE orders SET order_id = '{id}' WHERE order_id = {id}"
     return dataQuery(query)
 
 commitChanges()
